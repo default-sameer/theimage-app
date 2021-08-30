@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1>Image View</h1>
+<div class="card-body flex">
+    <!--Download -->
+    <div>
+        <a href="{{url_for('download', pic_id=pic.id)}}" class="btn btn-outline-primary">Download</a>
+    </div>
+    <div>
+        {% if current_user.is_authenticated %}
+        {% if pic.author == current_user %}
+        <form action="{{url_for('delete', pic_id=pic.id)}}" method="POST">
+        
+            <button type="submit" name='delete' class="btn btn-outline-danger">Delete</button>
+        </form>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+<img class="card-img-top" src="data:;base64,{{pic.rendered_data}}" alt="rendered_image">
+
+{% endblock %}

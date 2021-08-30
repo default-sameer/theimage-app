@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.css">
+{% endblock %}
+{% block body %}
+<h1>File Upload</h1>
+<form enctype="multipart/form-data" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{form.file.label}}
+        {{form.file}}
+    </div>
+    <hr>
+    <div class="form-group">
+        {{form.text.label}}
+        {{form.text}}
+    </div>
+
+    <div class="form-group">
+        {{form.categories.label}}
+        {{form.categories}}
+    </div>
+    
+    
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.js"></script>
+{% endblock %}
